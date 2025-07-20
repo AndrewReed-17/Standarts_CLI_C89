@@ -1,4 +1,4 @@
-# **LOCAL PROJECTION REGISTRY SYSTEM**
+# **Standarts_CLI_C89**
 Librérie & API  
 Développé en C standard I.S.O. révision 89 / 90  
 Distribué au format Header & C Source  
