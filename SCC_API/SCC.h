@@ -1,6 +1,12 @@
 #ifndef SCC_H
 #define SCC_H
 
+void Set_File_Info(const char* file_Path);
+
+void Display_Properties_Program(void);
+
+
+
 /* Structure de la liste */
 
 struct String_List {

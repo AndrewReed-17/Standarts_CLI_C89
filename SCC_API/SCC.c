@@ -1,6 +1,79 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "SCC.h"
+
+#define MAX_STR_LEN 256
+
+char Programs[MAX_STR_LEN];
+char Version[MAX_STR_LEN];
+char Editor[MAX_STR_LEN];
+char CopyRights[MAX_STR_LEN];
+char LicenceYears[MAX_STR_LEN];
+char SP[MAX_STR_LEN];
+char Publish_Date[MAX_STR_LEN];
+char Editions[MAX_STR_LEN];
+char Word_Size[MAX_STR_LEN];
+char Bit_Base[MAX_STR_LEN];
+
+void trim_newline(char* str) {
+    size_t len = strlen(str);
+    if (len > 0 && (str[len - 1] == '\n' || str[len - 1] == '\r')) {
+        str[len - 1] = '\0';
+    }
+}
+
+
+void Set_File_Info(const char* file_Path) {
+
+    FILE * info_file;
+
+    info_file = ("file_Path", "r");
+
+    if (info_file == NULL) {
+
+        printf("\n Error, could find the \"info.txt\" file\n\n press any key to continue");
+        getchar();
+
+        fclose(info_file);
+        return;
+    }
+
+    fgets(Programs,      MAX_STR_LEN, info_file); trim_newline(Programs);
+    fgets(Version,       MAX_STR_LEN, info_file); trim_newline(Version);
+    fgets(Editor,        MAX_STR_LEN, info_file); trim_newline(Editor);
+    fgets(CopyRights,    MAX_STR_LEN, info_file); trim_newline(CopyRights);
+    fgets(LicenceYears,  MAX_STR_LEN, info_file); trim_newline(LicenceYears);
+    fgets(SP,            MAX_STR_LEN, info_file); trim_newline(SP);
+    fgets(Publish_Date,  MAX_STR_LEN, info_file); trim_newline(Publish_Date);
+    fgets(Editions,      MAX_STR_LEN, info_file); trim_newline(Editions);
+    fgets(Word_Size,     MAX_STR_LEN, info_file); trim_newline(Word_Size);
+    fgets(Bit_Base,     MAX_STR_LEN, info_file); trim_newline(Bit_Base);
+
+    fclose(info_file);
+
+}
+
+void Display_Properties_Program(void) {
+
+    printf("    %s %s", Programs, Version);
+    printf("    %s %s %s \n", Editor, CopyRights, LicenceYears);
+
+    printf("Version      : %s", Version);
+    printf("Service Pack : %s", SP);
+    printf("Editions     : %s", Editions);
+    printf("Release Date : %s\n", Publish_Date);
+
+    printf("Word Size : %s", Word_Size);
+    printf("Bit Base  : %s", Bit_Base);
+
+}
+
+
+
+/* 
+   =============== String List Sections ===============
+*/
 
 /* Insert in Head */
 SLN StringList_Insert_InHead(char element, SLN L) {
